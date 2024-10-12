@@ -1,8 +1,8 @@
 from fastapi import APIRouter, status, HTTPException, Query, Depends,Path
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
-from database import get_db
-from schemas import NamesSchema, ResponseNamesSchema, RegisterUserSchema
+from database.database import get_db
+from schemas.schema import NamesSchema, ResponseNamesSchema, RegisterUserSchema
 from models import StudentModel, Users
 from typing import Annotated, Optional, List
 from fastapi.security import HTTPBasicCredentials, HTTPBasic
@@ -14,7 +14,7 @@ from pydantic import BaseModel
 
 
 
-router = APIRouter()
+router = APIRouter(prefix="/api/v1", tags=["BLOG"])
 security = HTTPBasic()
 
 # Password hashing context
